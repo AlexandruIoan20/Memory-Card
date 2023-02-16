@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import ImageHolder from "./components/imageHolder.jsx";
+import Card from "./components/card.jsx";
 import './styles/images.css';
 
 const App = () => { 
   return ( 
     <section>
-      <ImageHolder /> 
+      <Card name = "Salut"/>
     </section>
   )
 };
