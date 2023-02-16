@@ -1,0 +1,9 @@
+.image {
+    width: 200px;
+    height: 300px;
+
+    min-width: 200px;
+    min-height: 300px;
+
+    border: #000 2px solid;
+}
