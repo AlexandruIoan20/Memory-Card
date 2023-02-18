@@ -4,10 +4,10 @@ import ImageHolder from "./imageHolder";
 
 const Card = (props) => { 
     return ( 
-        <section className="card">
+        <React.StrictMode>
             <ImageHolder imageUrl = { props.imageUrl } /> 
             <NameCard name = {props.name}/>
-        </section>
+        </React.StrictMode>
     )
 }
 

@@ -5,16 +5,49 @@ const useCardList = (length) => {
     const [cardList, setCardList] = useState([]);
 
     useEffect( () => { 
+        /* Create card list */
         let arr = [];
 
         for(let i = 0; i < length; i++) 
-            arr[i] = { name: i, imageUrl: "https://picsum.photos/200/300", ID: i }
+            arr[i] = { name: i, selected: false, imageUrl: "https://picsum.photos/200/300", ID: i }
 
         setCardList (arr);
+
+        /* Select Card Functionality */
+        const selectCard = (HTMLCard) => { 
+            const index = HTMLCard.classList[0];
+
+            let arr = cardList; 
+            arr[index].selected = true; 
+
+            setCardList(arr);
+            console.log(cardList);
+        }
+
+        /* Event Listener */
+
+        document.addEventListener("click", (e) => { 
+            let button = e.target;
+
+            if (button.tagName === "IMG") { 
+                button = e.target.parentNode;
+                button = button.parentNode;
+            }
+            else { 
+                button = e.target.parentNode;
+            }
+
+            if(button.tagName === "ARTICLE") { 
+                selectCard(button);
+            }
+        }); 
+
+        return () => { 
+            document.removeEventListener('remove', selectCard);
+        }
     }, []);
 
     return cardList;
-
 };
 
 const CardList = (props) => {
@@ -24,7 +57,7 @@ const CardList = (props) => {
         <section className="card-list">
             { cardList.map (card => {
                 return (
-                <article key={card.ID}>
+                <article key={card.ID} className = {`${card.ID} card`}>
                     <Card name = {card.name} imageUrl= {card.imageUrl}/>
                 </article>
                 )
