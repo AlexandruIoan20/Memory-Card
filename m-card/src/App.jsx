@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Card from "./components/card.jsx";
 import CardList from "./components/listOfCards.jsx";
+import WinCondition from "./components/winCondition.jsx";
 import './styles/images.css';
 
 const App = () => { 

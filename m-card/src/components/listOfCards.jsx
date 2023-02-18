@@ -14,18 +14,30 @@ const useCardList = (length) => {
         setCardList (arr);
 
         /* Select Card Functionality */
+        console.log(arr);
+        const verifyCard = (HTMLCard) => { 
+            const index = parseInt(HTMLCard.classList[0]);
+            if(arr[index].selected == false) 
+                return true; 
+
+            else
+                return false;
+        };
+
         const selectCard = (HTMLCard) => { 
-            const index = HTMLCard.classList[0];
+            let verified = verifyCard(HTMLCard);
 
-            let arr = cardList; 
-            arr[index].selected = true; 
+            if(verified) { 
+                const index = parseInt(HTMLCard.classList[0]);
 
-            setCardList(arr);
-            console.log(cardList);
+                arr[index].selected = true; 
+
+                setCardList(arr);
+                console.log("verified");
+            }
         }
 
         /* Event Listener */
-
         document.addEventListener("click", (e) => { 
             let button = e.target;
 
